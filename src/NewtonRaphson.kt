@@ -1,3 +1,4 @@
+import java.beans.Expression
 import kotlin.math.absoluteValue
 import kotlin.math.cos
 import kotlin.math.sin
@@ -60,15 +61,12 @@ class newtonRaphson(x0: Float, e: Float, n: Int) {
 }
 
 fun main() {
-//
-//    println("Enter your function: ")
-//    val func:String= readLine()!!.split(" ".toRegex()).map { String::toString }.toString()
 
-//    println(func)
-
-
+    println("Enter your function with no spaces: ")
+    val func = readLine().toString()
     var x: Float = 3.141F
     var e: Float = 0.000001F
     var n: Int = 10
+    val result =
     newtonRaphson(x, e, n)
 }
