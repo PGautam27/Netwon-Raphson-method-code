@@ -1,4 +1,6 @@
-import kotlin.math.*
+import kotlin.math.absoluteValue
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.properties.Delegates
 
 
@@ -17,7 +19,7 @@ class newtonRaphson(x0: Float, e: Float, n: Int) {
     }
 
     private fun raphsonMethod() {
-        println("Step\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)")
+        println("Step\t\tx0\t\t\t\tf(x0)\t\t\t\tx1\t\t\t\tf(x1)")
         do {
             g0 = g(x0)
             f0 = f(x0)
@@ -29,7 +31,7 @@ class newtonRaphson(x0: Float, e: Float, n: Int) {
 
             x1 = x0 - f0 / g0
 
-            println("$step\t\t$x0\t\t$f0\t\t$x1\t\t$f1")
+            println("$step\t\t\t$x0\t\t$f0\t\t$x1\t\t$f1")
             x0 = x1
 
             step+=1
@@ -48,17 +50,24 @@ class newtonRaphson(x0: Float, e: Float, n: Int) {
 
 
     private fun f(x: Float): Float {
-        return 3 * x - cos(x) - 1
+        return x*sin(x) + cos(x)
     }
 
     private fun g(x: Float): Float {
-        return 3 + sin(x)
+        return x* cos(x)
     }
 
 }
 
 fun main() {
-    var x: Float = 1F
+//
+//    println("Enter your function: ")
+//    val func:String= readLine()!!.split(" ".toRegex()).map { String::toString }.toString()
+
+//    println(func)
+
+
+    var x: Float = 3.141F
     var e: Float = 0.000001F
     var n: Int = 10
     newtonRaphson(x, e, n)
